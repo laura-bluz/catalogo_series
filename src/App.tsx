@@ -1,8 +1,11 @@
+import { Sidebar } from "./components/Sidebar";
+import { GlobalStyle } from "./global";
 
 export function App() {
   return (
     <div className="App">
-      <p>Suas Séries Aqui</p>
+      <Sidebar />
+      <GlobalStyle />
     </div>
   );
 }
