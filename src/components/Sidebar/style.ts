@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.nav`
-    background: blue;
+    background: var(--blue);
     display: flex;
     flex-direction: column;
   
