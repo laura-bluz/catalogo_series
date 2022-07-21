@@ -1,12 +1,22 @@
 import { FormEvent, useState } from "react";
 import { Sidebar } from "../../components/Sidebar";
 import { Container } from "./style";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../services/firebaseConnection";
 
 export function Cadastro() {
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [confirmSenha, setConfirmSenha] = useState('');
+
+    async function criarUsuario() {
+        await createUserWithEmailAndPassword(auth, email, senha)
+        .then(value => {
+            console.log("Cadastrado com sucesso! " + value.user.uid);
+        })
+        .catch(error => console.log(error));
+    }
 
     function handleCadastro(event: FormEvent) {
         event.preventDefault();
@@ -37,7 +47,7 @@ export function Cadastro() {
                         <br></br>
 
 
-                        <button type='submit'>Efetuar cadastro</button>
+                        <button type='submit' onClick={() => criarUsuario()}>Efetuar cadastro</button>
                     </div>
                 </Container>
             </form>

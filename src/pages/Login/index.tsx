@@ -3,7 +3,9 @@ import { Container } from "./style";
 import "../../components/Sidebar/style";
 import { Link } from "react-router-dom";
 import { FormEvent, useState } from "react";
-import { Menu } from '../../pages/Menu';
+import { Menu } from "../../pages/Menu";
+import { signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../../services/firebaseConnection";
 
 export function Login() {
     const [email, setEmail] = useState('');
@@ -16,6 +18,14 @@ export function Login() {
             email,
             senha
         })
+    }
+
+    async function login() {
+        await signInWithEmailAndPassword(auth, email, senha)
+        .then(value => {
+            console.log("Usuário logado com sucesso!");
+        })
+        .catch(error => console.log(error));
     }
 
     return (
@@ -35,7 +45,7 @@ export function Login() {
                         <br></br>
 
                         
-                            <button type='submit'>Login</button>
+                            <button type='submit' onClick={() => login()}>Login</button>
                     </div>
                 </Container>
             </form>
