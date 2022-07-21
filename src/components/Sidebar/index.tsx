@@ -6,7 +6,7 @@ export function Sidebar() {
         <Container>
             <Content>
                 <img src={logo} alt='Suas Séries Aqui' />
-                <h1>Lembrou de alguma série?</h1>
+                <h1>Lembrou de alguma série que já assistiu?</h1>
                 <h2>É só guardar aqui para não esquecer!</h2>
 
                 <h3>Criado por </h3>

@@ -32,6 +32,10 @@ position: absolute;
 
         input {
             width: 50%;
+
+            &:focus {
+                background: #e0e0f8;
+            }
         }
 
         button {
@@ -40,6 +44,12 @@ position: absolute;
             color: white;
             width: 30%;
             align-self: center;
+
+            transition: filter 0.2s;
+            
+            &:hover {
+                filter: brightness(0.5);
+            }
         }
     }
 `;

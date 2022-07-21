@@ -31,26 +31,5 @@ export const Container = styled.div`
         span.senha {
             margin-top: 1rem;
         }
-
-        input {
-            width: 50%;
-            &:focus {
-                background: #e0e0f8;
-            }
-        }
-
-        button {
-            margin-top: 2rem;
-            background-color: var(--blue);
-            color: white;
-            width: 20%;
-            align-self: center;
-
-            transition: filter 0.2s;
-            
-            &:hover {
-                filter: brightness(0.5);
-            }
-        }
     }
 `;

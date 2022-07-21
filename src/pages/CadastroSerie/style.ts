@@ -24,16 +24,34 @@ export const Container = styled.div`
             text-align: left;
         }
         
-        span.email {
+        span.nome {
             margin-top: 5rem;
         }
         
-        span.senha {
+        span.descricao, span.file {
             margin-top: 1rem;
         }
 
         input {
             width: 50%;
+
+            &:focus {
+                background: #e0e0f8;
+            }
+        }
+
+        input.descricao {
+            width: 100%;
+            height: 50px;
+        }
+
+        input.file {
+            color: var(--blue);
+            transition: filter 0.2s;
+            
+            &:hover {
+                filter: brightness(0.9);
+            }
         }
 
         button {
@@ -42,6 +60,12 @@ export const Container = styled.div`
             color: white;
             width: 20%;
             align-self: center;
+
+            transition: filter 0.2s;
+            
+            &:hover {
+                filter: brightness(0.5);
+            }
         }
     }
 `;
