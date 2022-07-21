@@ -5,7 +5,6 @@ export const GlobalStyle = createGlobalStyle`
         --blue: #090cbd;
 
         --text-title: #2d2c6e;
-
     }
 
     * {

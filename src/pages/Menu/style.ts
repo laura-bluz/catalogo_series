@@ -14,24 +14,25 @@ position: absolute;
         flex-direction: column;
         width: 30%;
 
-        h1, span {
+        h1 {
             color: var(--text-title);
         }
         
-        span {
-            text-align: left;
-        }
-        
-        span.email {
-            margin-top: 5rem;
-        }
-        
-        span.senha {
-            margin-top: 1rem;
-        }
+    }
 
-        input {
-            width: 50%;
+    div.buttons {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
+        
+        button {
+            margin-top: 2rem;
+            background-color: var(--blue);
+            color: white;
+            width: 30%;
+            align-self: center;
         }
     }
 `;
