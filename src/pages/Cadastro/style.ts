@@ -38,6 +38,12 @@ position: absolute;
             }
         }
 
+        p.caracteres {
+            text-align: left;
+            font-size: 0.8rem;
+            color: #6e8cdb;
+        }
+        
         button {
             margin-top: 2rem;
             background-color: var(--blue);

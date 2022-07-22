@@ -13,19 +13,19 @@ export function Cadastro() {
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const [confirmSenha, setConfirmSenha] = useState('');
 
     async function criarUsuario() {
-        await createUserWithEmailAndPassword(auth, email, senha)
-            .then(value => {
-                console.log("Cadastrado com sucesso! " + value.user.uid);
-                navigate('/', { replace: true })
-            })
-            .catch(error => {
-                console.log(error);
-                alert("Prencha todos os campos!");
-            });
-    }
+            await createUserWithEmailAndPassword(auth, email, senha)
+                .then(value => {
+                    console.log("Cadastrado com sucesso! " + value.user.uid);
+                    alert("Cadastro realizado com sucesso!");
+                    navigate('/', { replace: true })
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("Prencha todos os campos corretamente!");
+                });
+        }
 
     function handleCadastro(event: FormEvent) {
         event.preventDefault();
@@ -33,7 +33,6 @@ export function Cadastro() {
         console.log({
             email,
             senha,
-            confirmSenha
         });
     }
 
@@ -57,9 +56,9 @@ export function Cadastro() {
 
                         <span className="senha">Senha</span>
                         <input placeholder="Digite sua nova senha aqui..." value={senha} onChange={event => setSenha(event.target.value)} />
-
-                        <span className="senha">Confirmação de senha</span>
-                        <input placeholder="Confirme sua nova senha aqui..." value={confirmSenha} onChange={event => setConfirmSenha(event.target.value)} />
+                        <p className="caracteres">A senha deve ter pelo menos 6 caracteres</p>
+                        {/* <span className="senha">Confirmação de senha</span>
+                        <input placeholder="Confirme sua nova senha aqui..." value={confirmSenha} onChange={event => setConfirmSenha(event.target.value)} /> */}
                         <br></br>
 
 

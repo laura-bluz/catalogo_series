@@ -47,6 +47,7 @@ export const Container = styled.div`
 
         input.file {
             color: var(--blue);
+            width: 100%;
             transition: filter 0.2s;
             
             &:hover {

@@ -31,7 +31,7 @@ export function Login() {
             })
             .catch(error => {
                 console.log(error);
-                alert("Insira todos os campos corretamente!");
+                alert("E-mail ou senha inválidos!");
             });
     }
 
