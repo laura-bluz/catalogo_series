@@ -31,5 +31,12 @@ export const Container = styled.div`
         span.senha {
             margin-top: 1rem;
         }
+        
+        button.voltar {
+                background: transparent;
+                border: none;
+                text-align: right;
+                margin-left: 30rem;
+        }
     }
 `;

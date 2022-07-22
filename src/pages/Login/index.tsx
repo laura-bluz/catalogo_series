@@ -3,11 +3,14 @@ import { Container } from "./style";
 import "../../components/Sidebar/style";
 import { Link } from "react-router-dom";
 import { FormEvent, useState } from "react";
-import { Menu } from "../../pages/Menu";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebaseConnection";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
+
+    let navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
@@ -24,6 +27,7 @@ export function Login() {
         await signInWithEmailAndPassword(auth, email, senha)
             .then(value => {
                 console.log("Usuário logado com sucesso!");
+                navigate('/menu', { replace: true })
             })
             .catch(error => {
                 console.log(error);

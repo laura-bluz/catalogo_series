@@ -66,6 +66,13 @@ export const Container = styled.div`
             &:hover {
                 filter: brightness(0.5);
             }
+
+            &.voltar {
+                background: transparent;
+                border: none;
+                text-align: right;
+                margin-left: 35rem;
+            }
         }
     }
 `;

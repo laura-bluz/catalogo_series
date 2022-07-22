@@ -50,6 +50,13 @@ position: absolute;
             &:hover {
                 filter: brightness(0.5);
             }
+
+            &.voltar {
+                background: transparent;
+                border: none;
+                text-align: right;
+                margin-left: 30rem;
+            }
         }
     }
 `;
