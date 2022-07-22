@@ -12,10 +12,13 @@ export function Cadastro() {
 
     async function criarUsuario() {
         await createUserWithEmailAndPassword(auth, email, senha)
-        .then(value => {
-            console.log("Cadastrado com sucesso! " + value.user.uid);
-        })
-        .catch(error => console.log(error));
+            .then(value => {
+                console.log("Cadastrado com sucesso! " + value.user.uid);
+            })
+            .catch(error => {
+                console.log(error);
+                alert("Prencha todos os campos!");
+            });
     }
 
     function handleCadastro(event: FormEvent) {
@@ -40,10 +43,10 @@ export function Cadastro() {
                         <input placeholder='Digite seu e-mail aqui...' value={email} onChange={event => setEmail(event.target.value)} />
 
                         <span className="senha">Senha</span>
-                        <input placeholder='Digite sua nova senha aqui...' value={senha} onChange={event => setSenha(event.target.value)}/>
+                        <input placeholder='Digite sua nova senha aqui...' value={senha} onChange={event => setSenha(event.target.value)} />
 
                         <span className="senha">Confirmação de senha</span>
-                        <input placeholder='Confirme sua nova senha aqui...' value={confirmSenha} onChange={event => setConfirmSenha(event.target.value)}/>
+                        <input placeholder='Confirme sua nova senha aqui...' value={confirmSenha} onChange={event => setConfirmSenha(event.target.value)} />
                         <br></br>
 
 
