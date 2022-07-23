@@ -10,14 +10,12 @@ export const Container = styled.nav`
     max-width: 24rem;
     width: 100%;
     height: 100vh;
-  
-    padding: 1.5rem; 
 `;
 
 export const Content = styled.div`
     max-width: 1120px;
 
-    padding: 5rem 1rem 10rem;
+    padding: 5rem 1rem;
 
     img {
         border-radius: 2.5rem;

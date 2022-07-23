@@ -1,25 +1,35 @@
 import { Sidebar } from "../../components/Sidebar";
 import { Container } from "./style";
 import "../../components/Sidebar/style";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import volta from '../../assets/voltar.png';
+import { useState } from "react";
 
 export function Catalogo() {
 
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
 
-    function voltar() {
-        return (
-            navigate('/menu', { replace: true })
-        )
-    }
+    // function voltar() {
+    //     return (
+    //         navigate('/menu', { replace: true })
+    //     )
+    // }
 
     return (
         <div>
             <Container>
                 <div>
-                    <button className="voltar" type="button" onClick={() => voltar()} ><img src={volta} alt="voltar" /></button>
-                    <h1>Suas séries aqui</h1>
+                    <nav>
+                        <ul>
+                            <li>Bem-vindo(a) "usuário"</li> 
+                            <li className="link"><Link to="/cadastroSerie">Cadastrar nova série</Link></li>
+                            <li className="logout">Botão Logout</li>
+                        </ul>
+                    </nav>
+
+               
+                    {/* <button className="voltar" type="button" onClick={() => voltar()} ><img src={volta} alt="voltar" /></button> */}
+                    {/* <h1>Suas séries aqui</h1>
 
                     <span className="nome">Imagem da série</span>
                     <span className="nome">Nome da série</span>
@@ -27,7 +37,7 @@ export function Catalogo() {
                     <br></br><br></br>
 
                     <span> Modal com a descrição</span>
-                    <span className="descricao">Descrição da série</span>
+                    <span className="descricao">Descrição da série</span> */}
 
 
                 </div>

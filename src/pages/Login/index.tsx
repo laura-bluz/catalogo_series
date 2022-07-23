@@ -27,7 +27,7 @@ export function Login() {
         await signInWithEmailAndPassword(auth, email, senha)
             .then(value => {
                 console.log("Usuário logado com sucesso!");
-                navigate('/menu', { replace: true })
+                navigate('/catalogo', { replace: true })
             })
             .catch(error => {
                 console.log(error);

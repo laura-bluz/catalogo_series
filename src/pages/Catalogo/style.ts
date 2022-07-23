@@ -2,41 +2,56 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
-    position: absolute;
-
     width: 100%;
     margin-left: 24rem;
     
     div {
         position: absolute;
-        margin-left: 30rem;
-        margin-top: 10rem;
+        /* margin-left: 30rem; */
+        /* margin-top: 0.5rem; */
         text-align:center;
         display: flex;
         flex-direction: column;
-        width: 30%;
+        width: 80%;
+        padding: 1rem;
+        background: var(--blue);
+            
+        ul{
+            display: flex;
+            justify-content: space-between;
+            background: var(--blue);
+                
+            li {
+                color: white;
+                list-style: none;
+                font-size: 18px;
+                margin-left: 10rem;
 
-        h1, span {
-            color: var(--text-title);
-        }
-        
-        span {
-            text-align: left;
-        }
-        
-        span.email {
-            margin-top: 5rem;
-        }
-        
-        span.senha {
-            margin-top: 1rem;
-        }
-        
-        button.voltar {
-                background: transparent;
-                border: none;
-                text-align: right;
-                margin-left: 30rem;
-        }
+                transition: color 0.2s;
+                
+                &:hover {
+                    color: black;
+                    /* filter: brightness(0.9); */
+                }
+
+                &.link{
+                    
+                    a {  
+                        text-decoration: none;
+                        color: white;
+
+                        &:hover {
+                                color: black;
+                            }
+                    }
+                    }
+
+                &.logout{
+                    cursor: pointer;
+                    margin-right: 1rem;
+                }
+            }
+    
+            }
     }
 `;
