@@ -13,8 +13,10 @@ export function Cadastro() {
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [confirmSenha, setConfirmSenha] = useState('');
 
     async function criarUsuario() {
+        if (senha === confirmSenha) {
             await createUserWithEmailAndPassword(auth, email, senha)
                 .then(value => {
                     console.log("Cadastrado com sucesso! " + value.user.uid);
@@ -25,14 +27,17 @@ export function Cadastro() {
                     console.log(error);
                     alert("Prencha todos os campos corretamente!");
                 });
+        } else {
+            alert("As senhas não coincidem! Digite novamente.");
         }
-
+    }
     function handleCadastro(event: FormEvent) {
         event.preventDefault();
 
         console.log({
             email,
             senha,
+            confirmSenha
         });
     }
 
@@ -57,8 +62,9 @@ export function Cadastro() {
                         <span className="senha">Senha</span>
                         <input placeholder="Digite sua nova senha aqui..." value={senha} onChange={event => setSenha(event.target.value)} />
                         <p className="caracteres">A senha deve ter pelo menos 6 caracteres</p>
-                        {/* <span className="senha">Confirmação de senha</span>
-                        <input placeholder="Confirme sua nova senha aqui..." value={confirmSenha} onChange={event => setConfirmSenha(event.target.value)} /> */}
+
+                        <span className="senha">Confirmação de senha</span>
+                        <input placeholder="Confirme sua nova senha aqui..." value={confirmSenha} onChange={event => setConfirmSenha(event.target.value)} />
                         <br></br>
 
 
