@@ -27,7 +27,7 @@ export function Catalogo() {
                         </ul>
                     </nav>
 
-               
+
                     {/* <button className="voltar" type="button" onClick={() => voltar()} ><img src={volta} alt="voltar" /></button> */}
                     {/* <h1>Suas séries aqui</h1>
 

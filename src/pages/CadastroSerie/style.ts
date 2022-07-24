@@ -55,6 +55,9 @@ export const Container = styled.div`
             }
         }
 
+        li {
+            color: red;
+        }
         button {
             margin-top: 2rem;
             background-color: var(--blue);
