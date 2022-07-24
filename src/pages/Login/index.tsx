@@ -1,5 +1,5 @@
 import { Sidebar } from "../../components/Sidebar";
-import { Container } from "./style";
+import { Container, Box } from "./style";
 import "../../components/Sidebar/style";
 import { Link } from "react-router-dom";
 import { FormEvent, useState } from "react";
@@ -36,9 +36,9 @@ export function Login() {
     }
 
     return (
-        <div>
+        <Box>
+            <Sidebar />
             <form className="form-login" onSubmit={handleLogin}>
-
                 <Container>
                     <div>
                         <h1>Login</h1>
@@ -56,7 +56,6 @@ export function Login() {
                     </div>
                 </Container>
             </form>
-            <Sidebar />
-        </div>
+        </Box>
     )
 }

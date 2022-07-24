@@ -1,25 +1,26 @@
 import styled from "styled-components";
 
+export const Box = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
 
 export const Container = styled.div`
-    position: absolute;
-
-    width: 100%;
-    margin-left: 24rem;
-    
+    width: 100%; 
+       
     div {
-        position: absolute;
         margin-left: 30rem;
-        margin-top: 10rem;
         text-align:center;
         display: flex;
         flex-direction: column;
-        width: 30%;
+        width: 50%;
 
         h1, span {
             color: var(--text-title);
         }
-        
+
+
         span {
             text-align: left;
         }
@@ -33,7 +34,7 @@ export const Container = styled.div`
         }
 
         input {
-            width: 50%;
+            width: 100%;
             &:focus {
                 background: #e0e0f8;
             }
@@ -43,7 +44,7 @@ export const Container = styled.div`
             margin-top: 2rem;
             background-color: var(--blue);
             color: white;
-            width: 20%;
+            width: 30%;
             align-self: center;
 
             transition: filter 0.2s;

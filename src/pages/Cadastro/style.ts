@@ -1,18 +1,20 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-position: absolute;
+export const Box = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
 
+export const Container = styled.div`
     width: 100%;
-    margin-left: 24rem;
 
     div {
         margin-left: 30rem;
-        margin-top: 10rem;
         text-align:center;
         display: flex;
         flex-direction: column;
-        width: 30%;
+        width: 50%;
 
         h1, span {
             color: var(--text-title);

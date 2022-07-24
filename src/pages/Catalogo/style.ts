@@ -1,57 +1,73 @@
 import styled from "styled-components";
 
+export const Box = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
 
 export const Container = styled.div`
     width: 100%;
-    margin-left: 24rem;
-    
-    div {
-        position: absolute;
-        /* margin-left: 30rem; */
-        /* margin-top: 0.5rem; */
-        text-align:center;
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        padding: 1rem;
-        background: var(--blue);
-            
-        ul{
-            display: flex;
-            justify-content: space-between;
-            background: var(--blue);
+      
+        nav {
+            text-align:center;
+            padding: 1rem;
+            background: black;
                 
-            li {
-                color: white;
-                list-style: none;
-                font-size: 18px;
-                margin-left: 10rem;
+            ul{
+                display: flex;
+                justify-content: space-between;
 
-                transition: color 0.2s;
-                
-                &:hover {
-                    color: black;
-                    /* filter: brightness(0.9); */
-                }
+                li {
+                    color: white;
+                    list-style: none;
+                    font-size: 18px;
+                    margin-left: 10rem;
 
-                &.link{
+                    transition: color 0.2s;
                     
-                    a {  
-                        text-decoration: none;
-                        color: white;
-
-                        &:hover {
-                                color: black;
-                            }
-                    }
+                    &:hover {
+                        color: var(--blue);
+                        /* filter: brightness(0.9); */
                     }
 
-                &.logout{
-                    cursor: pointer;
-                    margin-right: 1rem;
+                    &.perfil {
+                        cursor: pointer;
+                    }
+
+                    &.link {
+                        
+                        a {  
+                            text-decoration: none;
+                            color: white;
+
+                            &:hover {
+                                    color: var(--blue);
+                                }
+                        }
+                    }
+
+                    &.minhasSeries {
+                        a {
+                            text-decoration: none;
+                            color: var(--blue);    
+                        }
+                    }   
+
+                    &.logout{
+                        cursor: pointer;
+                        margin-right: 1rem;
+                    }
                 }
             }
-    
+        }
+
+        div.cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+           
+            &.div {
+                border: 1px solid black;
+                text-align: center;
             }
-    }
+        }
 `;

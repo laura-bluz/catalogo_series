@@ -2,6 +2,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAkWwcgQdyKGqMOB5voVFJ8tZITqjluZMw",
@@ -27,3 +28,4 @@ export const auth = getAuth(app);
 //     const errorMessage = error.message;
 //     // ..
 //   });
+export const db = getFirestore(app);

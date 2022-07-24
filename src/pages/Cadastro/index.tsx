@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import { Sidebar } from "../../components/Sidebar";
-import { Container } from "./style";
+import { Container, Box } from "./style";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebaseConnection";
 import { useNavigate } from "react-router-dom";
@@ -48,7 +48,8 @@ export function Cadastro() {
     }
 
     return (
-        <div>
+        <Box>
+            <Sidebar />
             <form className="form-cadastro" onSubmit={handleCadastro}>
                 <Container>
                     <div>
@@ -72,8 +73,6 @@ export function Cadastro() {
                     </div>
                 </Container>
             </form>
-            <Sidebar />
-
-        </div>
+        </Box>
     )
 }

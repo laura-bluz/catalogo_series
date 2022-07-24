@@ -7,6 +7,60 @@ export const Container = styled.div`
     width: 100%;
     margin-left: 24rem;
     
+    nav {
+            text-align:center;
+            padding: 1rem;
+            background: black;
+                
+            ul{
+                display: flex;
+                justify-content: space-between;
+
+                li {
+                    color: white;
+                    list-style: none;
+                    font-size: 18px;
+                    margin-left: 10rem;
+
+                    transition: color 0.2s;
+                    
+                    &:hover {
+                        color: var(--blue);
+                        /* filter: brightness(0.9); */
+                    }
+
+                    &.perfil {
+                        cursor: pointer;
+                    }
+
+                    &.novaSerie{    
+                        
+                        a {  
+                            text-decoration: none;
+                            color: var(--blue);
+                        }
+                    }
+
+                    &.minhasSeries{
+                        
+                        a {  
+                            text-decoration: none;
+                            color: white;
+
+                            &:hover {
+                                    color: var(--blue);
+                                }
+                        }
+                    }
+
+                    &.logout{
+                        cursor: pointer;
+                        margin-right: 25rem;
+                    }
+                }
+            }
+        }
+
     div {
         position: absolute;
         margin-left: 30rem;
