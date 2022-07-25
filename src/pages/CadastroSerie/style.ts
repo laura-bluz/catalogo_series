@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
+export const Box = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
 
 export const Container = styled.div`
-    position: absolute;
 
     width: 100%;
-    margin-left: 24rem;
-    
     nav {
             text-align:center;
             padding: 1rem;
@@ -33,19 +35,11 @@ export const Container = styled.div`
                         cursor: pointer;
                     }
 
-                    &.novaSerie{    
+                    &.link {
                         
                         a {  
                             text-decoration: none;
                             color: var(--blue);
-                        }
-                    }
-
-                    &.minhasSeries{
-                        
-                        a {  
-                            text-decoration: none;
-                            color: white;
 
                             &:hover {
                                     color: var(--blue);
@@ -53,16 +47,33 @@ export const Container = styled.div`
                         }
                     }
 
+                    &.novaSerie {
+                        a {
+                            text-decoration: none;
+                            color: var(--blue);    
+                        }
+                    }
+
+                    &.minhasSeries {
+                        a {
+                            text-decoration: none;
+                            color: white;
+                            
+                            &:hover {
+                                color: var(--blue);
+                            }
+                        }
+                    }   
+
                     &.logout{
                         cursor: pointer;
-                        margin-right: 25rem;
+                        margin-right: 1rem;
                     }
                 }
             }
         }
 
     div {
-        position: absolute;
         margin-left: 30rem;
         margin-top: 10rem;
         text-align:center;

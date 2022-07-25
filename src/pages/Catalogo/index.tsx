@@ -7,11 +7,12 @@ import { useCallback, useEffect, useState } from "react";
 import { Serie } from "../../interfaces";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
+import { Header } from "../../components/Header";
 
 export function Catalogo() {
 
     const [series, setSeries] = useState<Serie[]>([{}]);
-    
+
     const getSeries = () => {
         const serieCollectionRef = collection(db, "series");
         getDocs(serieCollectionRef).then(data => {
@@ -31,18 +32,10 @@ export function Catalogo() {
     return (
         <Box>
             <Sidebar />
+
             <Container>
 
-                <nav>
-                    <ul>
-                        <li>Bem-vindo(a) "usuário"</li>
-                        <li className="perfil">Meu Perfil</li>
-                        <li className="link"><Link to="/cadastroSerie">Nova Série</Link></li>
-                        <li className="minhasSeries"><Link to="/catalogo">Minhas Séries</Link></li>
-                        <li className="logout">Botão Logout</li>
-                    </ul>
-                </nav>
-
+                <Header />
 
                 {/* <button className="voltar" type="button" onClick={() => voltar()} ><img src={volta} alt="voltar" /></button> */}
                 {/* <h1>Suas séries aqui</h1>

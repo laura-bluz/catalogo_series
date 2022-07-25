@@ -1,5 +1,5 @@
 import { Sidebar } from "../../components/Sidebar";
-import { Container } from "./style";
+import { Box, Container } from "./style";
 import "../../components/Sidebar/style";
 import { FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ import { auth, db, storage } from "../../services/firebaseConnection";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { EmailAuthCredential, User } from "firebase/auth";
 import { InputFiles } from "typescript";
+import { Header } from "../../components/Header";
 
 export function CadastroSerie() {
     useState<{ nome?: string, descricao?: string }>({
@@ -25,21 +26,21 @@ export function CadastroSerie() {
     // const currentUser = auth.currentUser;
 
     useEffect(() => {
-        console.log('a',auth);
-        
+        console.log('a', auth);
+
         setUser(auth.currentUser);
-    },[]);
-    
+    }, []);
+
     const serieCollectionRef = collection(db, "series");
 
     function incluirSerie() {
 
-        
+
         const file = serie.imagem;
         if (!file || !user?.uid) return;
         console.log("file: ", file);
         console.log(auth.currentUser?.uid);
-        
+
         const storageRef = ref(storage, `imagens/${auth.currentUser?.uid}/${file.name}`);
         console.log(storageRef)
         const uploadTask = uploadBytesResumable(storageRef, file);
@@ -77,20 +78,11 @@ export function CadastroSerie() {
     }
 
     return (
-        <div>
-            <form className="form-cadastroSerie" onSubmit={handleCadastroSerie}>
-
-                <Container>
-                    <nav>
-                        <ul>
-                            <li>Bem-vindo(a) {user?.displayName}</li>
-                            <li className="perfil">Meu Perfil</li>
-                            <li className="novaSerie"><Link to="/cadastroSerie">Nova Série</Link></li>
-                            <li className="minhasSeries"><Link to="/catalogo">Minhas Séries</Link></li>
-                            <li className="logout">Botão Logout</li>
-                        </ul>
-                    </nav>
-
+        <Box>
+            <Sidebar />
+            <Container>
+                <Header />
+                <form className="form-cadastroSerie" onSubmit={handleCadastroSerie}>
                     <div>
                         {/* <button className="voltar" type="button" onClick={() => voltar()} ><img src={volta} alt="voltar" /></button> */}
                         <h1>Cadastre aqui sua nova série:</h1>
@@ -117,9 +109,9 @@ export function CadastroSerie() {
                         <button type='submit' onClick={() => incluirSerie()}>Incluir série</button>
 
                     </div>
-                </Container>
-            </form>
-            <Sidebar />
-        </div>
+                </form>
+            </Container>
+
+        </Box>
     )
 }

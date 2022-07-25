@@ -24,11 +24,6 @@ export const Container = styled.div`
                     margin-left: 10rem;
 
                     transition: color 0.2s;
-                    
-                    &:hover {
-                        color: var(--blue);
-                        /* filter: brightness(0.9); */
-                    }
 
                     &.perfil {
                         cursor: pointer;
@@ -45,6 +40,17 @@ export const Container = styled.div`
                                 }
                         }
                     }
+
+                    &.novaSerie {
+                        a {
+                            text-decoration: none;
+                            color: white;
+                            
+                            &:hover {
+                                color: var(--blue);
+                            }
+                        }
+                    }  
 
                     &.minhasSeries {
                         a {
