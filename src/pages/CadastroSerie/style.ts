@@ -27,7 +27,7 @@ export const Container = styled.div`
                     transition: color 0.2s;
                     
                     &:hover {
-                        color: var(--blue);
+                        color: var(--blue-weak);
                         /* filter: brightness(0.9); */
                     }
 
@@ -39,10 +39,10 @@ export const Container = styled.div`
                         
                         a {  
                             text-decoration: none;
-                            color: var(--blue);
+                            color: var(--blue-weak);
 
                             &:hover {
-                                    color: var(--blue);
+                                    color: var(--blue-weak);
                                 }
                         }
                     }
@@ -50,7 +50,7 @@ export const Container = styled.div`
                     &.novaSerie {
                         a {
                             text-decoration: none;
-                            color: var(--blue);    
+                            color: var(--blue-weak);    
                         }
                     }
 
@@ -60,7 +60,7 @@ export const Container = styled.div`
                             color: white;
                             
                             &:hover {
-                                color: var(--blue);
+                                color: var(--blue-weak);
                             }
                         }
                     }   
@@ -123,6 +123,7 @@ export const Container = styled.div`
         li {
             color: red;
         }
+        
         button {
             margin-top: 2rem;
             background-color: var(--blue);

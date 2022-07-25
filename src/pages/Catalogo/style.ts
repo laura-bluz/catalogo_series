@@ -47,7 +47,7 @@ export const Container = styled.div`
                             color: white;
                             
                             &:hover {
-                                color: var(--blue);
+                                color: var(--blue-weak);
                             }
                         }
                     }  
@@ -55,7 +55,7 @@ export const Container = styled.div`
                     &.minhasSeries {
                         a {
                             text-decoration: none;
-                            color: var(--blue);    
+                            color: var(--blue-weak);    
                         }
                     }   
 
@@ -74,6 +74,39 @@ export const Container = styled.div`
             &.div {
                 border: 1px solid black;
                 text-align: center;
+            }
+        }
+
+        div.else {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--blue);
+
+            p {
+                
+                width: 100%;
+                margin-top: 3rem;
+                margin-left: 25rem;
+                font-size: 30px;
+                color: var(--text-title);
+                display: flex;
+                align-items: center;
+            }
+
+            img {
+                width: 50%;
+            }
+        }
+
+        div.else_flecha {
+            width: 100%;
+
+            img {
+                margin-left: 53rem;
+                width: 20%;
             }
         }
 `;

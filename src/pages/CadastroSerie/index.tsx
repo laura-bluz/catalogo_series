@@ -3,14 +3,13 @@ import { Box, Container } from "./style";
 import "../../components/Sidebar/style";
 import { FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import volta from "../../assets/voltar.png";
 import { addDoc, collection } from "firebase/firestore";
 import { Serie } from "../../interfaces";
 import { auth, db, storage } from "../../services/firebaseConnection";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { EmailAuthCredential, User } from "firebase/auth";
-import { InputFiles } from "typescript";
+import { User } from "firebase/auth";
 import { Header } from "../../components/Header";
+import { upload } from "@testing-library/user-event/dist/upload";
 
 export function CadastroSerie() {
     useState<{ nome?: string, descricao?: string }>({
@@ -26,8 +25,6 @@ export function CadastroSerie() {
     // const currentUser = auth.currentUser;
 
     useEffect(() => {
-        console.log('a', auth);
-
         setUser(auth.currentUser);
     }, []);
 
@@ -38,7 +35,6 @@ export function CadastroSerie() {
 
         const file = serie.imagem;
         if (!file || !user?.uid) return;
-        console.log("file: ", file);
         console.log(auth.currentUser?.uid);
 
         const storageRef = ref(storage, `imagens/${auth.currentUser?.uid}/${file.name}`);
@@ -59,7 +55,6 @@ export function CadastroSerie() {
                     setImagemURL(url);
                     addDoc(serieCollectionRef, { nome: serie.nome, descricao: serie.descricao, imagemURL: imagemURL })
                         .then(); // create
-                    console.log(serie);
                 })
             }
         )
@@ -102,9 +97,8 @@ export function CadastroSerie() {
                         }
                         } />
 
-                        {!Image && <progress value={carregandoImagem} max="100"></progress>}
-                        <br></br>
-
+                        {!imagemURL && <progress value={carregandoImagem} max="100"></progress>}
+                        {/* {imagemURL && <img src={imagemURL} alt="Imagem"/>} pra mostrar a imagem na tela  */}
 
                         <button type='submit' onClick={() => incluirSerie()}>Incluir série</button>
 

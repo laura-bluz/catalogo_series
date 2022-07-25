@@ -18,7 +18,7 @@ export const Nav = styled.nav`
             transition: color 0.2s;
             
             &:hover {
-                color: var(--blue);
+                color: var(--blue-weak);
                 /* filter: brightness(0.9); */
             }
 
@@ -33,7 +33,7 @@ export const Nav = styled.nav`
                     color: white;
 
                     &:checked {
-                            color: var(--blue);
+                            color: var(--blue-weak);
                         }
                 }
             }
@@ -45,7 +45,7 @@ export const Nav = styled.nav`
                     color: white;
 
                     &:checked {
-                            color: var(--blue);
+                            color: var(--blue-weak);
                         }
                 }
             }

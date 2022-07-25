@@ -1,13 +1,14 @@
 import { Sidebar } from "../../components/Sidebar";
 import { Container, Box } from "./style";
 import "../../components/Sidebar/style";
-import { Link } from "react-router-dom";
 // import volta from '../../assets/voltar.png';
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Serie } from "../../interfaces";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 import { Header } from "../../components/Header";
+import flecha_para_cima from "../../assets/flecha_para_cima.png"
+
 
 export function Catalogo() {
 
@@ -53,6 +54,7 @@ export function Catalogo() {
                         {series.map((serie) => {
                             return (
                                 <div>
+                                    {serie.imagemURL && <img src={serie.imagemURL} alt="Imagem" />}
                                     <p>{serie.nome}</p>
                                     <p>{serie.descricao}</p>
                                 </div> //componente Card
@@ -62,9 +64,12 @@ export function Catalogo() {
                         {/* .reverse() */}
                     </div>
                     :
-                    <div>
-                        <h1>Você ainda não possui nenhuma série.</h1>
-                        <p>Clique aqui para cadastrar uma nova série.</p>
+                    <div className="else">
+                        <h1>Olá, vimos que você ainda não possui nenhuma série!</h1>
+                        <div className="else_flecha">
+                            <img src={flecha_para_cima} alt="flecha que aponta para Nova Série" />
+                            <p>Então clique aqui para cadastrar uma nova série.</p>
+                        </div>
                     </div>
                 }
             </Container>
