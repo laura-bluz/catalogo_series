@@ -15,9 +15,9 @@ export function Cadastro() {
     const [senha, setSenha] = useState('');
     const [confirmSenha, setConfirmSenha] = useState('');
 
-    async function criarUsuario() {
+    function criarUsuario() {
         if (senha === confirmSenha) {
-            await createUserWithEmailAndPassword(auth, email, senha)
+        createUserWithEmailAndPassword(auth, email, senha)
                 .then(value => {
                     console.log("Cadastrado com sucesso! " + value.user.uid);
                     alert("Cadastro realizado com sucesso!");

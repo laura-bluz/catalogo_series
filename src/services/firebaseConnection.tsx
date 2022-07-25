@@ -3,6 +3,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, getFirestore } from "firebase/firestore";
+import { FirebaseStorage, getStorage, StorageReference } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAkWwcgQdyKGqMOB5voVFJ8tZITqjluZMw",
@@ -13,10 +14,13 @@ const firebaseConfig = {
   appId: "1:604896153265:web:8083d1318e054bcb549c90"
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+// laura: FI6WRHYfr7R88GFnVI272X52EFK2
+
+// console.log(auth.currentUser?.uid);
+
 // createUserWithEmailAndPassword(auth, email, password)
 //   .then((userCredential) => {
 //     // Signed in
@@ -29,3 +33,5 @@ export const auth = getAuth(app);
 //     // ..
 //   });
 export const db = getFirestore(app);
+
+export const storage = getStorage(app);

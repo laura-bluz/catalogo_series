@@ -11,7 +11,7 @@ import { db } from "../../services/firebaseConnection";
 export function Catalogo() {
 
     const [series, setSeries] = useState<Serie[]>([{}]);
-
+    
     const getSeries = () => {
         const serieCollectionRef = collection(db, "series");
         getDocs(serieCollectionRef).then(data => {

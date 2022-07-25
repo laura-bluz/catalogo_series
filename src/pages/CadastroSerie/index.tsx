@@ -6,47 +6,75 @@ import { Link, useNavigate } from "react-router-dom";
 import volta from "../../assets/voltar.png";
 import { addDoc, collection } from "firebase/firestore";
 import { Serie } from "../../interfaces";
-import { db } from "../../services/firebaseConnection";
+import { auth, db, storage } from "../../services/firebaseConnection";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { EmailAuthCredential, User } from "firebase/auth";
+import { InputFiles } from "typescript";
 
 export function CadastroSerie() {
-    // useState<{ nome?: string, descricao?: string }>({
-    //     nome: '',
-    //     descricao: '',
-    // });
-
+    useState<{ nome?: string, descricao?: string }>({
+        nome: '',
+        descricao: '',
+    });
     const [serie, setSerie] = useState<Serie>({
         nome: '',
         descricao: ''
     });
 
+    const [user, setUser] = useState<User | null>()
+    // const currentUser = auth.currentUser;
+
+    useEffect(() => {
+        console.log('a',auth);
+        
+        setUser(auth.currentUser);
+    },[]);
+    
     const serieCollectionRef = collection(db, "series");
 
-    async function incluirSerie() {
-        await addDoc(serieCollectionRef, serie); // create
-        console.log(serie);
-        navigate('/catalogo', { replace: true })
+    function incluirSerie() {
+
+        
+        const file = serie.imagem;
+        if (!file || !user?.uid) return;
+        console.log("file: ", file);
+        console.log(auth.currentUser?.uid);
+        
+        const storageRef = ref(storage, `imagens/${auth.currentUser?.uid}/${file.name}`);
+        console.log(storageRef)
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+                const carregandoImagem = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                setCarregandoImagem(carregandoImagem);
+            },
+            error => {
+                alert("Deu erro!");
+            },
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref).then(url => {
+                    setImagemURL(url);
+                    addDoc(serieCollectionRef, { nome: serie.nome, descricao: serie.descricao, imagemURL: imagemURL })
+                        .then(); // create
+                    console.log(serie);
+                })
+            }
+        )
+
+        // navigate('/catalogo', { replace: true })
     }
 
-    // useEffect(() => {
-    //     const getSeries = async () => {
-    //         const data = await getDocs(serieCollectionRef);
-    //         // console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    //         setSerie(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    // let navigate = useNavigate();
 
-    //     };
-    //     getSeries();
-    // }, []);
-
-    let navigate = useNavigate();
-
+    const [imagemURL, setImagemURL] = useState("");
+    const [carregandoImagem, setCarregandoImagem] = useState(0);
+    // const [enviarImagem, setEnviarImagem] = useState(null);
 
     function handleCadastroSerie(event: FormEvent) {
         event.preventDefault();
     }
-
-    // function voltar(): void {
-    //     navigate('/catalogo', { replace: true })
-    // }
 
     return (
         <div>
@@ -55,7 +83,7 @@ export function CadastroSerie() {
                 <Container>
                     <nav>
                         <ul>
-                            <li>Bem-vindo(a) "usuário"</li>
+                            <li>Bem-vindo(a) {user?.displayName}</li>
                             <li className="perfil">Meu Perfil</li>
                             <li className="novaSerie"><Link to="/cadastroSerie">Nova Série</Link></li>
                             <li className="minhasSeries"><Link to="/catalogo">Minhas Séries</Link></li>
@@ -76,7 +104,13 @@ export function CadastroSerie() {
                         <input className="descricao" placeholder='Digite a descrição da série aqui...' value={serie.descricao} onChange={event => setSerie({ ...serie, descricao: event.target.value })} />
 
                         <span className="file">Escolher imagem da série</span>
-                        <input className="file" type="file" />
+                        <input className="file" type="file" onChange={event => {
+                            if (event.target && event.target.files?.length)
+                                setSerie({ ...serie, imagem: event.target.files[0] })
+                        }
+                        } />
+
+                        {!Image && <progress value={carregandoImagem} max="100"></progress>}
                         <br></br>
 
 
@@ -86,19 +120,6 @@ export function CadastroSerie() {
                 </Container>
             </form>
             <Sidebar />
-
-            <div>
-                <ul>
-                    {/* {series.map((serie) => {
-                        return (
-                            <div key={serie.id}>
-                                <li>{serie.nome}</li>
-                                <li>{serie.descricao}</li>
-                            </div>
-                        )
-                    })} */}
-                </ul>
-            </div>
         </div>
     )
 }
