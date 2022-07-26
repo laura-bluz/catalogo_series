@@ -55,6 +55,15 @@ export const Nav = styled.nav`
                 width: 10%;
                 display: flex;
                 align-items: center;
+
+                a {
+                    text-decoration: none;
+                    color: white;
+
+                    &:hover {
+                        color: var(--blue-weak);
+                    }
+                }
             }
         }
     }

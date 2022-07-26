@@ -8,15 +8,17 @@ export const Div = styled.div`
         
 
         div {
-            border: 1px solid black;
             text-align: center;
             position: relative;
-            /* width: 60%; */
+            width: 50%;
 
             p {
                 position: absolute;
                 bottom: 10px;
+                left: 10px;
                 color: white;
+                max-width: 100%;
+                word-wrap: break-word;
             }
         }
 `;

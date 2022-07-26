@@ -12,7 +12,7 @@ export function Card(props: CardProps) {
             <div key={props.key}>
                 {props.serie.imagemURL && <img src={props.serie.imagemURL} alt="Imagem" />}
                 <p>{props.serie.nome}</p>
-                <p>{props.serie.descricao}</p>
+                {/* <p>{props.serie.descricao}</p> */}
             </div>
         </Div>
     )

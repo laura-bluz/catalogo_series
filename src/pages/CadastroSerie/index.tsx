@@ -2,14 +2,13 @@ import { Sidebar } from "../../components/Sidebar";
 import { Box, Container } from "./style";
 import "../../components/Sidebar/style";
 import { FormEvent, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { addDoc, collection } from "firebase/firestore";
 import { Serie } from "../../interfaces";
 import { auth, db, storage } from "../../services/firebaseConnection";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { User } from "firebase/auth";
 import { Header } from "../../components/Header";
-import { upload } from "@testing-library/user-event/dist/upload";
 
 export function CadastroSerie() {
     useState<{ nome?: string, descricao?: string }>({
@@ -22,7 +21,6 @@ export function CadastroSerie() {
     });
 
     const [user, setUser] = useState<User | null>()
-    // const currentUser = auth.currentUser;
 
     useEffect(() => {
         setUser(auth.currentUser);
@@ -35,7 +33,6 @@ export function CadastroSerie() {
 
         const file = serie.imagem;
         if (!file || !user?.uid) return;
-        console.log(auth.currentUser?.uid);
 
         const storageRef = ref(storage, `imagens/${auth.currentUser?.uid}/${file.name}`);
         console.log(storageRef)
@@ -61,16 +58,15 @@ export function CadastroSerie() {
 
                 })
             }
-        )
-
+            
+        )        
         // navigate('/catalogo', { replace: true })
     }
 
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
     const [imagemURL, setImagemURL] = useState("");
     const [carregandoImagem, setCarregandoImagem] = useState(0);
-    // const [enviarImagem, setEnviarImagem] = useState(null);
 
     function handleCadastroSerie(event: FormEvent) {
         event.preventDefault();
