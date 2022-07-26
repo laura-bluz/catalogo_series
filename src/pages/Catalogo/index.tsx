@@ -1,18 +1,19 @@
 import { Sidebar } from "../../components/Sidebar";
 import { Container, Box } from "./style";
 import "../../components/Sidebar/style";
-// import volta from '../../assets/voltar.png';
 import { useEffect, useState } from "react";
 import { Serie } from "../../interfaces";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 import { Header } from "../../components/Header";
 import flecha_para_cima from "../../assets/flecha_para_cima.png"
+import { Card } from "../../components/Cards";
 
 
 export function Catalogo() {
 
     const [series, setSeries] = useState<Serie[]>([{}]);
+    console.log('s', series);
 
     const getSeries = () => {
         const serieCollectionRef = collection(db, "series");
@@ -51,14 +52,17 @@ export function Catalogo() {
 
                 {series?.length > 0 ?
                     <div className="cards">
-                        {series.map((serie) => {
+                        {series.map((serie, i) => {
                             return (
-                                <div>
-                                    {serie.imagemURL && <img src={serie.imagemURL} alt="Imagem" />}
-                                    <p>{serie.nome}</p>
-                                    <p>{serie.descricao}</p>
-                                </div> //componente Card
-
+                                <Card
+                                    key={i}
+                                    serie={serie}
+                                />
+                                // <div key={i}>
+                                //     {serie.imagemURL && <img src={serie.imagemURL} alt="Imagem" />}
+                                //     <p>{serie.nome}</p>
+                                //     <p>{serie.descricao}</p>
+                                // </div> //componente Card
                             )
                         })}
                         {/* .reverse() */}

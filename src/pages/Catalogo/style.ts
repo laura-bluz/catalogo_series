@@ -7,8 +7,9 @@ export const Box = styled.div`
 
 export const Container = styled.div`
     width: 100%;
-      
-        nav {
+    background-image: repeating-linear-gradient(50deg, black, blue 10%, black 20%);
+        
+    nav {
             text-align:center;
             padding: 1rem;
             background: black;
@@ -70,10 +71,12 @@ export const Container = styled.div`
         div.cards {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-           
-            &.div {
-                border: 1px solid black;
-                text-align: center;
+
+            img {
+                /* width: 170px;
+                height: 250px; */
+                width: 14.31rem;
+    height: 21.25rem;
             }
         }
 

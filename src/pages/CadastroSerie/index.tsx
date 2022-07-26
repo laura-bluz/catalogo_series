@@ -53,8 +53,12 @@ export function CadastroSerie() {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then(url => {
                     setImagemURL(url);
-                    addDoc(serieCollectionRef, { nome: serie.nome, descricao: serie.descricao, imagemURL: imagemURL })
-                        .then(); // create
+                    addDoc(serieCollectionRef, { nome: serie.nome, descricao: serie.descricao, imagemURL: url })
+                        .then() // create
+                        .catch(
+                            // deletar a imagem
+                        )
+
                 })
             }
         )
