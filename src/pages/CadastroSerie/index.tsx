@@ -3,7 +3,7 @@ import { Box, Container } from "./style";
 import "../../components/Sidebar/style";
 import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { Serie } from "../../interfaces";
 import { auth, db, storage } from "../../services/firebaseConnection";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -24,18 +24,46 @@ export function CadastroSerie() {
 
     useEffect(() => {
         setUser(auth.currentUser);
+        console.log('user', user);
+
     }, []);
 
-    const serieCollectionRef = collection(db, "series");
+    const userCollectionRef = collection(db, 'users');
+
+
+    async function saveNewSerie(url: string) {
+        if (auth.currentUser?.uid) {
+            const docUser = doc(db, 'users', auth.currentUser.uid)
+            const docSnap = await getDoc(docUser)
+            console.log('docuser', docSnap);
+            const data = docSnap.exists() ? docSnap.data() : null
+            console.log('data', data)
+            const updateRef = doc(db, 'users', auth.currentUser.uid);
+            const aux = data?.serie;
+            var array = aux.concat([{ nome: serie.nome, descricao: serie.descricao, imagemURL: url }]);
+
+            updateDoc(updateRef, {
+                serie: array
+            }).then(response => {
+                alert("updated")
+            }).catch(error => {
+                console.log(error.message)
+            })
+            
+        }
+       
+            
+        
+    }
 
     function incluirSerie() {
 
-
+        const user = auth.currentUser
         const file = serie.imagem;
         if (!file || !user?.uid) return;
 
         const storageRef = ref(storage, `imagens/${auth.currentUser?.uid}/${file.name}`);
-        console.log(storageRef)
+        console.log("storageref", storageRef)
         const uploadTask = uploadBytesResumable(storageRef, file);
 
         uploadTask.on(
@@ -43,6 +71,7 @@ export function CadastroSerie() {
             snapshot => {
                 const carregandoImagem = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 setCarregandoImagem(carregandoImagem);
+                console.log("incluiu")
             },
             error => {
                 alert("Deu erro!");
@@ -50,16 +79,12 @@ export function CadastroSerie() {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then(url => {
                     setImagemURL(url);
-                    addDoc(serieCollectionRef, { nome: serie.nome, descricao: serie.descricao, imagemURL: url })
-                        .then() // create
-                        .catch(
-                            // deletar a imagem
-                        )
-
+                    saveNewSerie(url)
+                    
                 })
             }
-            
-        )        
+
+        )
         // navigate('/catalogo', { replace: true })
     }
 

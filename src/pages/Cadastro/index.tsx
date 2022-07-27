@@ -5,14 +5,13 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../services/firebaseConnection";
 import { useNavigate } from "react-router-dom";
 import volta from '../../assets/voltar.png';
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
 
 
 export function Cadastro() {
 
     let navigate = useNavigate();
 
-    const user = auth.currentUser;
 
 
     const [nome, setNome] = useState('');
@@ -33,19 +32,26 @@ export function Cadastro() {
     }, []);
 
     async function criarUsuario() {
-        const user = await addDoc(userCollectionRef, {
-            nome,
-            email
-        });
-        console.log("user", user);
-
-
         if (senha === confirmSenha) {
             createUserWithEmailAndPassword(auth, email, senha)
                 .then(value => {
-                    console.log("Cadastrado com sucesso! " + value.user.uid);
-                    alert("Cadastro realizado com sucesso!");
-                    // navigate('/', { replace: true })
+                    console.log("v", value)
+                    setDoc(doc(db, 'users', value.user.uid), { nome: nome, email: email, uid: value.user.uid, serie: [] })
+                    .then (e => {
+                        alert("Cadastro realizado com sucesso!");
+                    })
+
+                    // const user = addDoc(userCollectionRef, {
+                    //     nome: nome,
+                    //     email: email,
+                    //     uid: value.user.uid
+                    // }).then(e => {
+                    //     console.log("user", user);
+                    //     console.log("Cadastrado com sucesso! " + value.user.uid);
+                    //     alert("Cadastro realizado com sucesso!");
+                    // })
+
+                    navigate('/', { replace: true })
                 })
                 .catch(error => {
                     console.log(error);
@@ -103,8 +109,6 @@ export function Cadastro() {
 
                         <button type="submit" onClick={() => criarUsuario()} >Efetuar cadastro</button>
                     </div>
-
-                <div>{user?.email}</div>
 
                 </Container>
             </form>

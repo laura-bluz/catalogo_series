@@ -3,33 +3,47 @@ import { Container, Box } from "./style";
 import "../../components/Sidebar/style";
 import { useEffect, useState } from "react";
 import { Serie } from "../../interfaces";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../services/firebaseConnection";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { app, auth, db } from "../../services/firebaseConnection";
 import { Header } from "../../components/Header";
 import flecha_para_cima from "../../assets/flecha_para_cima.png"
 import { Card } from "../../components/Cards";
+import { getAuth, User } from "firebase/auth";
+import "firebase/auth";
+import firebase from "firebase/app";
 
 
 export function Catalogo() {
 
     const [series, setSeries] = useState<Serie[]>([{}]);
-    console.log('s', series);
+    // console.log('s', series);
+    const [user, setUser] = useState<User | null>()
+    getAuth(app).onAuthStateChanged((user) => {
+        if (user)
+            setUser(user)   
+    })
 
-    const getSeries = () => {
-        const serieCollectionRef = collection(db, "series");
-        getDocs(serieCollectionRef).then(data => {
-            setSeries(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        }).catch(e => {
-            alert('deu erro');
-        })
+
+    async function getSeries(uid?: string | null) {
+
+
+        if (uid) {
+            // const serieCollectionRef = collection(db, "users", uid)
+            const docUser = doc(db, 'users', uid)
+            const docSnap = await getDoc(docUser)
+            console.log('docuser', docSnap);
+            const data = docSnap.exists() ? docSnap.data() : null
+            console.log('data',data)
+            setSeries(data?.serie);
+        }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }
 
     useEffect(() => {
-        getSeries();
+        getSeries(user?.uid);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [user]);
 
     return (
         <Box>
@@ -38,17 +52,6 @@ export function Catalogo() {
             <Container>
 
                 <Header />
-
-                {/* <button className="voltar" type="button" onClick={() => voltar()} ><img src={volta} alt="voltar" /></button> */}
-                {/* <h1>Suas séries aqui</h1>
-
-                    <span className="nome">Imagem da série</span>
-                    <span className="nome">Nome da série</span>
-
-                    <br></br><br></br>
-
-                    <span> Modal com a descrição</span>
-                    <span className="descricao">Descrição da série</span> */}
 
                 {series?.length > 0 ?
                     <div className="cards">

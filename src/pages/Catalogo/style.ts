@@ -7,7 +7,7 @@ export const Box = styled.div`
 
 export const Container = styled.div`
     width: 100%;
-    background-image: repeating-linear-gradient(50deg, black, blue 10%, black 20%);
+    /* background-image: repeating-linear-gradient(50deg, black, blue 10%, black 20%); */
         
     nav {
             text-align:center;
@@ -85,8 +85,10 @@ export const Container = styled.div`
             flex-direction: column;
             width: 40%;
             margin-top: 2rem;
-            text-align: center;
+            margin-left: 0.5rem;
+            /* text-align: center; */
             color: var(--blue);
+            /* color: white; */
 
             p {
                 
@@ -95,6 +97,7 @@ export const Container = styled.div`
                 margin-left: 25rem;
                 font-size: 30px;
                 color: var(--text-title);
+                /* color: white; */
                 display: flex;
                 align-items: center;
             }

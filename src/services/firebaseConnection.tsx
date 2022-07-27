@@ -16,7 +16,11 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 
-export const auth = getAuth(app);
+export let auth = getAuth(app);
+
+getAuth(app).onAuthStateChanged((user) => {
+  auth = getAuth(app)
+})
 // laura: FI6WRHYfr7R88GFnVI272X52EFK2
 
 // console.log(auth.currentUser?.uid);
