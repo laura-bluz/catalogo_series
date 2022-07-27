@@ -46,6 +46,7 @@ export function CadastroSerie() {
                 serie: array
             }).then(response => {
                 alert("updated")
+                navigate('/catalogo', { replace: true })
             }).catch(error => {
                 console.log(error.message)
             })
@@ -79,13 +80,11 @@ export function CadastroSerie() {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then(url => {
                     setImagemURL(url);
-                    saveNewSerie(url)
-                    
+                    saveNewSerie(url)                    
                 })
             }
 
         )
-        // navigate('/catalogo', { replace: true })
     }
 
     let navigate = useNavigate();
