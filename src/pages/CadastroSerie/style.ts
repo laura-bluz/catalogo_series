@@ -93,8 +93,14 @@ export const Container = styled.div`
             margin-top: 5rem;
         }
         
-        span.descricao, span.file {
+        span.descricao, span.file, span.nota {
             margin-top: 1rem;
+        }
+        
+        p.caracteres {
+            text-align: left;
+            font-size: 0.8rem;
+            color: #6e8cdb;
         }
 
         input {
@@ -102,6 +108,12 @@ export const Container = styled.div`
 
             &:focus {
                 background: #e0e0f8;
+            }
+
+            &.nota {
+                width: 10%;
+                color: var(--blue);
+                text-align: center;
             }
         }
 

@@ -1,55 +1,34 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Sidebar } from "../../components/Sidebar";
 import { Container, Box } from "./style";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../services/firebaseConnection";
 import { useNavigate } from "react-router-dom";
 import volta from '../../assets/voltar.png';
-import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
+import {  doc, setDoc } from "firebase/firestore";
 
 
 export function Cadastro() {
 
     let navigate = useNavigate();
 
-
-
     const [nome, setNome] = useState('');
-    const [users, setUsers] = useState({});
+    const [sobrenome, setSobrenome] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [estado, setEstado] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [confirmSenha, setConfirmSenha] = useState('');
-    const userCollectionRef = collection(db, "users");
-
-    useEffect(() => {
-        const getUsers = async () => {
-            const data = await getDocs(userCollectionRef);
-            // console.log("data", data.docs.map((doc) => ({ ...doc.data(), id: doc.id})));
-            setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
-        getUsers();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     async function criarUsuario() {
         if (senha === confirmSenha) {
             createUserWithEmailAndPassword(auth, email, senha)
                 .then(value => {
                     console.log("v", value)
-                    setDoc(doc(db, 'users', value.user.uid), { nome: nome, email: email, uid: value.user.uid, serie: [] })
-                    .then (e => {
-                        alert("Cadastro realizado com sucesso!");
-                    })
-
-                    // const user = addDoc(userCollectionRef, {
-                    //     nome: nome,
-                    //     email: email,
-                    //     uid: value.user.uid
-                    // }).then(e => {
-                    //     console.log("user", user);
-                    //     console.log("Cadastrado com sucesso! " + value.user.uid);
-                    //     alert("Cadastro realizado com sucesso!");
-                    // })
+                    setDoc(doc(db, 'users', value.user.uid), { nome: nome, sobrenome: sobrenome, estado: estado, email: email, uid: value.user.uid, serie: [] })
+                        .then(e => {
+                            alert("Cadastro realizado com sucesso!");
+                        })
 
                     navigate('/', { replace: true })
                 })
@@ -65,15 +44,6 @@ export function Cadastro() {
     function handleCadastro(event: FormEvent) {
         event.preventDefault();
     }
-
-    // function signOut() {
-    //     sessionStorage.clear();
-    //     setUsers(null);
-
-    //     return (
-    //         navigate('/', { replace: true })
-    //     )
-    // }
 
     function voltar() {
         return (
@@ -94,6 +64,15 @@ export function Cadastro() {
 
                         <span className="nome">Nome</span>
                         <input type="text" placeholder="Digite seu nome aqui..." value={nome} onChange={event => setNome(event.target.value)} />
+
+                        <span className="sobrenome">Sobrenome</span>
+                        <input type="text" placeholder="Digite seu sobrenome aqui..." value={sobrenome} onChange={event => setSobrenome(event.target.value)} />
+
+                        <span className="cidade">Cidade</span>
+                        <input type="text" placeholder="Digite sua cidade aqui..." value={cidade} onChange={event => setCidade(event.target.value)} />
+
+                        <span className="estado">Estado</span>
+                        <input type="text" placeholder="Digite seu estado aqui..." value={estado} onChange={event => setEstado(event.target.value)} />
 
                         <span className="email">E-mail</span>
                         <input placeholder="Digite seu e-mail aqui..." value={email} onChange={event => setEmail(event.target.value)} />

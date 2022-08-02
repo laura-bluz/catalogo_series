@@ -11,7 +11,8 @@ export function Card(props: CardProps) {
         <Div>
             <div key={props.key}>
                 {props.serie.imagemURL && <img src={props.serie.imagemURL} alt="Imagem" />}
-                <p>{props.serie.nome}</p>
+                <p className="nome">{props.serie.nome}</p>
+                <p className="nota">{props.serie.nota}/10</p>
                 {/* <p>{props.serie.descricao}</p> */}
             </div>
         </Div>

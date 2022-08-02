@@ -4,5 +4,6 @@ export interface Serie {
     descricao?: string,
     id?: string,
     imagem?: File,
-    imagemURL?: string
+    imagemURL?: string,
+    nota?: number
 }

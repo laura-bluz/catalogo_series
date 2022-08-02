@@ -4,6 +4,7 @@ import { Cadastro } from "./pages/Cadastro";
 import { CadastroSerie } from "./pages/CadastroSerie";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Catalogo } from "./pages/Catalogo";
+import { Perfil } from "./pages/Perfil";
 
 
 export function App() {
@@ -18,6 +19,7 @@ export function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/cadastroserie" element={<CadastroSerie />} />
           <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/perfil" element={<Perfil />} />
         </Routes>
       </Router>
 

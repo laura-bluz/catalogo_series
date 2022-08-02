@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Sidebar } from "../../components/Sidebar";
 import { Box, Container } from "./style";
 import "../../components/Sidebar/style";
 import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { Serie } from "../../interfaces";
 import { auth, db, storage } from "../../services/firebaseConnection";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -11,13 +12,15 @@ import { User } from "firebase/auth";
 import { Header } from "../../components/Header";
 
 export function CadastroSerie() {
-    useState<{ nome?: string, descricao?: string }>({
+    useState<{ nome?: string, descricao?: string, nota: number }>({
         nome: '',
         descricao: '',
+        nota: 1
     });
     const [serie, setSerie] = useState<Serie>({
         nome: '',
-        descricao: ''
+        descricao: '',
+        nota: 1
     });
 
     const [user, setUser] = useState<User | null>()
@@ -40,7 +43,7 @@ export function CadastroSerie() {
             console.log('data', data)
             const updateRef = doc(db, 'users', auth.currentUser.uid);
             const aux = data?.serie;
-            var array = aux.concat([{ nome: serie.nome, descricao: serie.descricao, imagemURL: url }]);
+            var array = aux.concat([{ nome: serie.nome, descricao: serie.descricao, nota: serie.nota, imagemURL: url }]);
 
             updateDoc(updateRef, {
                 serie: array
@@ -110,10 +113,14 @@ export function CadastroSerie() {
                         {/* <input type="text" placeholder='Digite o nome da série aqui...' value={nome} onChange={event => setNome(event.target.value)} /> */}
                         <input placeholder='Digite o nome da série aqui...' value={serie.nome} onChange={event => setSerie({ ...serie, nome: event.target.value })} />
 
-                        <span className="descricao">Descrição da série</span>
+                        <span className="descricao">Review da série</span>
                         {/* <input type="text" className="descricao" placeholder='Digite a descrição da série aqui...' value={descricao} onChange={event => setDescricao(event.target.value)} /> */}
-                        <input className="descricao" placeholder='Digite a descrição da série aqui...' value={serie.descricao} onChange={event => setSerie({ ...serie, descricao: event.target.value })} />
-
+                        <input className="descricao" placeholder='Digite sua review da série aqui...' value={serie.descricao} onChange={event => setSerie({ ...serie, descricao: event.target.value })} />
+                        <p className="caracteres">Review = o que você achou da série</p>
+                        
+                        <span className="nota">Nota da série</span>
+                        <input className="nota" type="number" min="1" max="10" value={serie.nota} onChange={event => setSerie({ ...serie, nota: parseInt(event.target.value) })} />
+                        
                         <span className="file">Escolher imagem da série</span>
                         <input className="file" type="file" onChange={event => {
                             if (event.target && event.target.files?.length)

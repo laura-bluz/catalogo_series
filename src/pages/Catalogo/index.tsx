@@ -3,15 +3,13 @@ import { Container, Box } from "./style";
 import "../../components/Sidebar/style";
 import { useEffect, useState } from "react";
 import { Serie } from "../../interfaces";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { app, auth, db } from "../../services/firebaseConnection";
+import { doc, getDoc } from "firebase/firestore";
+import { app, db } from "../../services/firebaseConnection";
 import { Header } from "../../components/Header";
 import flecha_para_cima from "../../assets/flecha_para_cima.png"
 import { Card } from "../../components/Cards";
 import { getAuth, User } from "firebase/auth";
-import "firebase/auth";
-import firebase from "firebase/app";
-
+import { useNavigate } from "react-router-dom";
 
 export function Catalogo() {
 
@@ -23,7 +21,8 @@ export function Catalogo() {
             setUser(user)   
     })
 
-
+    let navigate = useNavigate();
+    
     async function getSeries(uid?: string | null) {
 
 
