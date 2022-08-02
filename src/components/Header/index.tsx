@@ -10,9 +10,9 @@ import { getAuth, User } from "firebase/auth";
 export function Header() {
     const [userName, setUserName] = useState('');
     const [user, setUser] = useState<User | null>()
-    getAuth(app).onAuthStateChanged((user) => {
-        if (user)
-            setUser(user)
+    getAuth(app).onAuthStateChanged((u) => {
+        if (u && !user)
+            setUser(u)
     })
 
 
@@ -22,7 +22,7 @@ export function Header() {
             // const serieCollectionRef = collection(db, "users", uid)
             const docUser = doc(db, 'users', uid)
             const docSnap = await getDoc(docUser)
-            console.log('docuser', docSnap);
+            // console.log('docuser', docSnap);
             const data = docSnap.exists() ? docSnap.data() : null
             // console.log('data',data)
             if (data?.nome)
@@ -32,7 +32,7 @@ export function Header() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }
 
-    useEffect(() => {
+    useEffect(() => {        
         getUsersDoc(user?.uid);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
