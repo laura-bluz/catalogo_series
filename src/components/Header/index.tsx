@@ -40,22 +40,12 @@ export function Header() {
     return (
         <Nav>
             <ul>
-                <li>Bem-vindo(a) {userName}</li>
+                <li>Bem-vindo(a) {userName}!</li>
                 <li className="perfil"><Link to="/perfil">Meu Perfil</Link></li>
                 <li className="novaSerie"><Link to="/cadastroSerie">Nova Série</Link></li>
                 <li className="minhasSeries"><Link to="/catalogo">Minhas Séries</Link></li>
                 <li className="logout"><img src={sair} alt="Logout" /><Link to="/">Logout</Link></li>
             </ul>
-
-            {/* <div>
-                {users.map((user) => {
-                    return (
-                        <div key={user.id}>
-                            <p>{user.nome}</p>
-                        </div>
-                    );
-                })}
-            </div> */}
         </Nav >
 
 

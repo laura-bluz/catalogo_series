@@ -10,63 +10,36 @@ export const Container = styled.div`
     /* background-image: repeating-linear-gradient(50deg, black, blue 10%, black 20%); */
         
     nav {
-            text-align:center;
-            padding: 1rem;
-            background: black;
-                
-            ul{
-                display: flex;
-                justify-content: space-between;
+        ul {
+            li {
+            
+                &.perfil {
+                    cursor: pointer;
 
-                li {
-                    color: white;
-                    list-style: none;
-                    font-size: 18px;
-                    margin-left: 10rem;
+                    a {
+                        text-decoration: none;
+                        color: white;
 
-                    transition: color 0.2s;
-
-                    &.perfil {
-                        cursor: pointer;
-                    }
-
-                    &.link {
-                        
-                        a {  
-                            text-decoration: none;
-                            color: white;
-
-                            &:hover {
-                                    color: var(--blue);
-                                }
+                        &:hover {
+                            color: var(--blue-weak);
                         }
                     }
+                }
 
-                    &.novaSerie {
-                        a {
-                            text-decoration: none;
-                            color: white;
-                            
-                            &:hover {
-                                color: var(--blue-weak);
-                            }
-                        }
-                    }  
+                &.novaSerie {
+                    a:hover {
+                        color: var(--blue-weak);
+                    }
+                }
 
-                    &.minhasSeries {
-                        a {
-                            text-decoration: none;
-                            color: var(--blue-weak);    
-                        }
-                    }   
-
-                    &.logout{
-                        cursor: pointer;
-                        margin-right: 1rem;
+                &.minhasSeries {
+                    a {
+                        color: var(--blue-weak);
                     }
                 }
             }
         }
+    }
 
         div.cards {
             display: grid;
@@ -76,7 +49,7 @@ export const Container = styled.div`
                 /* width: 170px;
                 height: 250px; */
                 width: 14.31rem;
-    height: 21.25rem;
+                height: 21.25rem;
             }
         }
 

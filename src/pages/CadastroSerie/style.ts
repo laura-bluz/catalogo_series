@@ -10,68 +10,36 @@ export const Container = styled.div`
 
     width: 100%;
     nav {
-            text-align:center;
-            padding: 1rem;
-            background: black;
-                
-            ul{
-                display: flex;
-                justify-content: space-between;
+        ul {
+            li {
+            
+                &.perfil {
+                    cursor: pointer;
 
-                li {
-                    color: white;
-                    list-style: none;
-                    font-size: 18px;
-                    margin-left: 10rem;
+                    a {
+                        text-decoration: none;
+                        color: white;
 
-                    transition: color 0.2s;
-                    
-                    &:hover {
-                        color: var(--blue-weak);
-                        /* filter: brightness(0.9); */
-                    }
-
-                    &.perfil {
-                        cursor: pointer;
-                    }
-
-                    &.link {
-                        
-                        a {  
-                            text-decoration: none;
+                        &:hover {
                             color: var(--blue-weak);
-
-                            &:hover {
-                                    color: var(--blue-weak);
-                                }
                         }
                     }
+                }
 
-                    &.novaSerie {
-                        a {
-                            text-decoration: none;
-                            color: var(--blue-weak);    
-                        }
+                &.novaSerie {
+                    a {
+                        color: var(--blue-weak);
                     }
+                }
 
-                    &.minhasSeries {
-                        a {
-                            text-decoration: none;
-                            color: white;
-                            
-                            &:hover {
-                                color: var(--blue-weak);
-                            }
-                        }
-                    }   
-
-                    &.logout{
-                        cursor: pointer;
-                        margin-right: 1rem;
+                &.minhasSeries {
+                    a:hover {
+                        color: var(--blue-weak);
                     }
                 }
             }
         }
+    }
 
     div {
         margin-left: 30rem;
