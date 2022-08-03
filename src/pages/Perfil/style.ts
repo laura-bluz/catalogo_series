@@ -125,4 +125,35 @@ export const Container = styled.div`
             }
         }
     }
+
+
+    h1 {
+            color: var(--text-title);
+            text-align: center;
+            margin-top: 2rem;
+    }
+
+    div.dados {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        
+        p {
+            font-size: 20px;
+        }
+
+        div {
+            text-align: left;
+            margin-top: 3rem;
+            margin-left: 0;
+            
+            &.buttons {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+    }
 `;

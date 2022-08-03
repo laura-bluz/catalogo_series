@@ -25,7 +25,7 @@ export function Cadastro() {
             createUserWithEmailAndPassword(auth, email, senha)
                 .then(value => {
                     console.log("v", value)
-                    setDoc(doc(db, 'users', value.user.uid), { nome: nome, sobrenome: sobrenome, estado: estado, email: email, uid: value.user.uid, serie: [] })
+                    setDoc(doc(db, 'users', value.user.uid), { nome: nome, sobrenome: sobrenome, cidade: cidade, estado: estado, email: email, uid: value.user.uid, serie: [] })
                         .then(e => {
                             alert("Cadastro realizado com sucesso!");
                         })

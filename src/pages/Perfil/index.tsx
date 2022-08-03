@@ -1,13 +1,17 @@
 import { getAuth, User } from "firebase/auth";
 import { doc, DocumentData, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useResolvedPath } from "react-router-dom";
+import ReactModal from "react-modal";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { app, db } from "../../services/firebaseConnection";
 import { Box, Container } from "./style";
+import Modal from "react-modal";
 
 export function Perfil() {
+
+    let navigate = useNavigate();
 
     const [data, setData] = useState<DocumentData | null>()
     const [userAuth, setUserAuth] = useState<User | null>()
@@ -37,35 +41,62 @@ export function Perfil() {
     }, [userAuth]);
 
 
+    function go() {
+        navigate('/catalogo', { replace: true })
+    }
+
+    // const [modalOpen, setModalOpen] = useState(false);
+
+    // function handleOpenModal() {
+    //     setModalOpen(true);
+    // }
+
+    // function handleCloseModal() {
+    //     setModalOpen(false);
+    // }
+
     return (
         <Box>
             <Sidebar />
             <Container>
-
                 <Header />
-                <div>
-                    <h1>Perfil do Usuário</h1>
-                    {/* {users.map((user, i) => { */}
-                    {/* return ( */}
-                    {/* <div key={i}> */}
-                    {/* <p>{user?.nome}</p> */}
-                    <p>{data?.nome}</p>
-                    {/* <p>{user.descricao}</p> */}
-                    {/* <p>{user.nota}</p> */}
-                    {/* ) */}
-                    {/* })} */}
 
-                    {/* <span className="nome">Nome:</span>
-                    <p>{ }</p>
-                    <span className="sobrenome">Sobrenome:</span>
-                    <span className="cidade">Cidade:</span>
-                    <span className="estado">Estado:</span>
-                    <span className="email">E-mail:</span> */}
+                <h1>Perfil do Usuário</h1>
 
+                <div className="dados">
+
+
+                    <div>
+                        <p>Nome: {data?.nome}</p>
+                    </div>
+                    <div>
+                        <p>Sobrenome: {data?.sobrenome}</p>
+                    </div>
+
+                    <div>
+                        <p>Cidade: {data?.cidade}</p>
+                    </div>
+                    <div>
+                        <p>Estado: {data?.estado}</p>
+                    </div>
+                    <div>
+                        <p>E-mail: {data?.email}</p>
+                    </div>
                     <br></br>
-                    {/* <button type='submit'>Login</button> */}
+                    <div className="buttons">
+                        <button type='button'>Editar Perfil</button>
+                        <button type='button' onClick={() => go()}>Salvar Perfil</button>
+                    </div>
                 </div>
             </Container>
+            {/* <Modal
+                isOpen={modalOpen}
+                onRequestClose={handleCloseModal}
+            >
+                <h1>Editar Perfil</h1>
+            </Modal> */}
+
+
         </Box>
     )
 }
