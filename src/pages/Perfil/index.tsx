@@ -45,16 +45,6 @@ export function Perfil() {
         navigate('/catalogo', { replace: true })
     }
 
-    // const [modalOpen, setModalOpen] = useState(false);
-
-    // function handleOpenModal() {
-    //     setModalOpen(true);
-    // }
-
-    // function handleCloseModal() {
-    //     setModalOpen(false);
-    // }
-
     return (
         <Box>
             <Sidebar />
@@ -89,14 +79,6 @@ export function Perfil() {
                     </div>
                 </div>
             </Container>
-            {/* <Modal
-                isOpen={modalOpen}
-                onRequestClose={handleCloseModal}
-            >
-                <h1>Editar Perfil</h1>
-            </Modal> */}
-
-
         </Box>
     )
 }
