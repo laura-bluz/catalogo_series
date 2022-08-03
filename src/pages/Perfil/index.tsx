@@ -67,20 +67,20 @@ export function Perfil() {
 
 
                     <div>
-                        <p>Nome: {data?.nome}</p>
+                        <p><span>Nome:</span> {data?.nome}</p>
                     </div>
                     <div>
-                        <p>Sobrenome: {data?.sobrenome}</p>
+                        <p><span>Sobrenome:</span> {data?.sobrenome}</p>
                     </div>
 
                     <div>
-                        <p>Cidade: {data?.cidade}</p>
+                        <p><span>Cidade:</span> {data?.cidade}</p>
                     </div>
                     <div>
-                        <p>Estado: {data?.estado}</p>
+                        <p><span>Estado:</span> {data?.estado}</p>
                     </div>
                     <div>
-                        <p>E-mail: {data?.email}</p>
+                        <p><span>E-mail:</span> {data?.email}</p>
                     </div>
                     <br></br>
                     <div className="buttons">
