@@ -9,19 +9,15 @@ import { Header } from "../../components/Header";
 import flecha_para_cima from "../../assets/flecha_para_cima.png"
 import { Card } from "../../components/Cards";
 import { getAuth, User } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
 export function Catalogo() {
 
     const [series, setSeries] = useState<Serie[]>([{}]);
-    // console.log('s', series);
     const [user, setUser] = useState<User | null>()
     getAuth(app).onAuthStateChanged((user) => {
         if (user)
             setUser(user)   
     })
-
-    let navigate = useNavigate();
     
     async function getSeries(uid?: string | null) {
 
@@ -30,9 +26,9 @@ export function Catalogo() {
             // const serieCollectionRef = collection(db, "users", uid)
             const docUser = doc(db, 'users', uid)
             const docSnap = await getDoc(docUser)
-            console.log('docuser', docSnap);
+            // console.log('docuser', docSnap);
             const data = docSnap.exists() ? docSnap.data() : null
-            console.log('data',data)
+            // console.log('data',data)
             setSeries(data?.serie);
         }
 

@@ -84,17 +84,14 @@ export function CadastroSerie() {
 
     const [imagemURL, setImagemURL] = useState("");
     const [carregandoImagem, setCarregandoImagem] = useState(0);
-    
-    function handleCadastroSerie(event: FormEvent) {
-        event.preventDefault();
-    }
+
 
     return (
         <Box>
             <Sidebar />
             <Container>
                 <Header />
-                <form className="form-cadastroSerie" onSubmit={handleCadastroSerie}>
+                <form className="form-cadastroSerie" onSubmit={(e) => e?.preventDefault()}>
                     <div>
                         <h1>Cadastre aqui sua nova série:</h1>
 
