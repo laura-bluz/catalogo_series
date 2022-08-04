@@ -9,7 +9,7 @@ export const Container = styled.nav`
   
     max-width: 24rem;
     width: 100%;
-    height: 100vh;
+    height: 98vh;
 `;
 
 export const Content = styled.div`

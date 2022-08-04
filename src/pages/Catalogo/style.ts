@@ -8,8 +8,60 @@ export const Box = styled.div`
 
 export const ModalBlock = styled.div`
 
-`;
+    div.modalGeral {
+        display: flex;
+        flex-direction: row;
 
+
+        img {
+            width: 50% !important;
+            height: 90vh; 
+        }
+
+        div.dados {
+            margin-top: 1rem;
+            /* padding: 1rem; */
+            height: 100%;
+            font-size: 18px;     
+            width: 50%;
+        
+            span {
+                color: var(--blue);
+                margin-top: 3rem;
+                margin-left: 2rem;
+            }
+
+            p {
+                margin-left: 2rem;
+                margin-top: 3rem;
+                font-family: 'cursive';
+            }
+
+            div {
+                display: flex;
+            }
+        }
+
+        div.nota {
+            p{
+                margin-left: 2.5rem;
+            }
+        }
+
+        div.review {
+            display: flex;
+            width: 100%;
+            height: 50vh;
+            overflow-y: auto; 
+
+            p {
+                width: 80%;
+                margin-left: 1.5rem;
+                word-break: break-all;
+            }
+        }        
+    }
+`;
 
 
 export const Container = styled.div`

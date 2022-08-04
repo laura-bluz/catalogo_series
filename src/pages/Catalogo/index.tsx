@@ -100,28 +100,28 @@ export function Catalogo() {
             <Modal
                 isOpen={modalOpen}
 
-                style={{ content: { marginLeft: '10%', marginRight: '10%', padding: '0', overflow: 'hidden' } }}
+                style={{ content: { marginLeft: '20%', marginRight: '20%', padding: '0', overflow: 'hidden' } }}
                 onRequestClose={() => setModalOpen(false)}
             // ariaHideApp={false}
             >
                 <ModalBlock>
                     {/* <img height={'100%'} width={'69.23%'} src={selectSerie.imagemURL} alt="Imagem" /> */}
-                    <div style={{ display: "flex" }}>
-                        <img width={'50%'} height={'auto'} src={selectSerie.imagemURL} alt="Imagem" />
+                    <div className="modalGeral">
+                        <img src={selectSerie.imagemURL} alt="Imagem" />
 
-                        <div style={{ marginTop: '1rem', padding: '1rem', fontSize: '18px' }}>
-                            <div style={{ display: "flex" }}>
-                                <span style={{ color: 'var(--blue)', marginTop: '3rem' }}>Nome:</span>
-                                <p style={{ marginLeft: '2rem', marginTop: '3rem', fontFamily: 'cursive' }}>{selectSerie.nome}</p>
+                        <div className="dados">
+                            <div className="nome">
+                                <span>Nome:</span>
+                                <p>{selectSerie.nome}</p>
                             </div>
                             <br></br>
-                            <div style={{ display: "flex" }}>
-                                <span style={{ color: 'var(--blue)', marginTop: '3rem' }}>Nota:</span>
-                                <p style={{ marginLeft: '2.5rem', marginTop: '3rem', fontFamily: 'cursive' }}>{selectSerie.nota}/10</p>
+                            <div className="nota">
+                                <span>Nota:</span>
+                                <p>{selectSerie.nota}/10</p>
                             </div>
                             <br></br>
-                            <div style={{ display: "flex", width: '100%', height: '400px', overflowY: 'auto' }}>
-                                <span style={{ color: 'var(--blue)', marginTop: '3rem' }}>Review:</span>
+                            <div className="review">
+                                <span>Review:</span>
                                 <p style={{ marginLeft: '1.5rem', marginTop: '3rem', fontFamily: 'cursive', wordBreak: 'break-all' }}> {selectSerie.descricao}</p>
                             </div>
                         </div>
