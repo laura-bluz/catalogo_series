@@ -52,7 +52,16 @@ export const Container = styled.div`
         h1, span {
             color: var(--text-title);
         }
+
         
+
+        textarea.descricao {
+            width: 100%;
+            height: 100px;
+            overflow: scroll;
+            resize: none;
+        }
+
         span {
             text-align: left;
         }
@@ -73,7 +82,7 @@ export const Container = styled.div`
 
         input {
             width: 50%;
-
+            overflow: auto;
             &:focus {
                 background: #e0e0f8;
             }
@@ -83,11 +92,6 @@ export const Container = styled.div`
                 color: var(--blue);
                 text-align: center;
             }
-        }
-
-        input.descricao {
-            width: 100%;
-            height: 50px;
         }
 
         input.file {

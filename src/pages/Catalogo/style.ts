@@ -5,6 +5,13 @@ export const Box = styled.div`
     flex-direction: row;
 `;
 
+
+export const ModalBlock = styled.div`
+
+`;
+
+
+
 export const Container = styled.div`
     width: 100%;
     /* background-image: repeating-linear-gradient(50deg, black, blue 10%, black 20%); */

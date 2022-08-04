@@ -44,11 +44,11 @@ export function CadastroSerie() {
             }).catch(error => {
                 console.log(error.message)
             })
-            
+
         }
-       
-            
-        
+
+
+
     }
 
     function incluirSerie() {
@@ -73,7 +73,7 @@ export function CadastroSerie() {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then(url => {
                     setImagemURL(url);
-                    saveNewSerie(url);                   
+                    saveNewSerie(url);
                 })
             }
 
@@ -99,12 +99,13 @@ export function CadastroSerie() {
                         <input type="text" placeholder='Digite o nome da série aqui...' value={serie.nome} onChange={event => setSerie({ ...serie, nome: event.target.value })} />
 
                         <span className="descricao">Review da série</span>
-                        <input type="textarea" className="descricao" placeholder='Digite sua review da série aqui...' value={serie.descricao} onChange={event => setSerie({ ...serie, descricao: event.target.value })} />
+                        {/* <input type="textarea" className="descricao" placeholder='Digite sua review da série aqui...' value={serie.descricao} onChange={event => setSerie({ ...serie, descricao: event.target.value })} /> */}
+                        <textarea className="descricao" placeholder='Digite sua review da série aqui...' value={serie.descricao} onChange={event => setSerie({ ...serie, descricao: event.target.value })}></textarea>
                         <p className="caracteres">Review = o que você achou da série</p>
-                        
+
                         <span className="nota">Nota da série</span>
                         <input className="nota" type="number" min="1" max="10" value={serie.nota} onChange={event => setSerie({ ...serie, nota: parseInt(event.target.value) })} />
-                        
+
                         <span className="file">Escolher imagem da série</span>
                         <input className="file" type="file" onChange={event => {
                             if (event.target && event.target.files?.length)

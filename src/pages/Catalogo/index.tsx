@@ -1,5 +1,5 @@
 import { Sidebar } from "../../components/Sidebar";
-import { Container, Box } from "./style";
+import { Container, Box, ModalBlock } from "./style";
 import "../../components/Sidebar/style";
 import { useEffect, useState } from "react";
 import { Serie } from "../../interfaces";
@@ -97,17 +97,17 @@ export function Catalogo() {
                 </Container>
             </Box>
 
-
             <Modal
                 isOpen={modalOpen}
-                style={{ content: { width: '50%', height: '75%', marginTop: '3%', marginLeft: '25%', padding: '0' } }}
+
+                style={{ content: { marginLeft: '10%', marginRight: '10%', padding: '0', overflow: 'hidden' } }}
                 onRequestClose={() => setModalOpen(false)}
             // ariaHideApp={false}
             >
-                <div className="modal">
+                <ModalBlock>
                     {/* <img height={'100%'} width={'69.23%'} src={selectSerie.imagemURL} alt="Imagem" /> */}
                     <div style={{ display: "flex" }}>
-                        <img width={'500'} height={'700'} src={selectSerie.imagemURL} alt="Imagem" />
+                        <img width={'50%'} height={'auto'} src={selectSerie.imagemURL} alt="Imagem" />
 
                         <div style={{ marginTop: '1rem', padding: '1rem', fontSize: '18px' }}>
                             <div style={{ display: "flex" }}>
@@ -120,13 +120,13 @@ export function Catalogo() {
                                 <p style={{ marginLeft: '2.5rem', marginTop: '3rem', fontFamily: 'cursive' }}>{selectSerie.nota}/10</p>
                             </div>
                             <br></br>
-                            <div style={{ display: "flex",  width: '110%', height:'20%', overflowY: 'scroll'}}>
+                            <div style={{ display: "flex", width: '100%', height: '400px', overflowY: 'auto' }}>
                                 <span style={{ color: 'var(--blue)', marginTop: '3rem' }}>Review:</span>
-                                <p style={{ marginLeft: '1.5rem', marginTop: '3rem', fontFamily: 'cursive' }}> {selectSerie.descricao}</p>
+                                <p style={{ marginLeft: '1.5rem', marginTop: '3rem', fontFamily: 'cursive', wordBreak: 'break-all' }}> {selectSerie.descricao}</p>
                             </div>
                         </div>
                     </div>
-                </div>
+                </ModalBlock>
             </Modal>
 
         </>

@@ -16,11 +16,10 @@ export function Login() {
 
     function handleLogin(event: FormEvent) {
         event.preventDefault();
+    }
 
-        console.log({
-            email,
-            senha
-        })
+    function esconderSenha() {
+    
     }
 
     async function login() {
@@ -48,11 +47,11 @@ export function Login() {
                         <input placeholder='Digite seu e-mail aqui...' value={email} onChange={event => setEmail(event.target.value)} />
 
                         <span className="senha">Senha</span>
-                        <input placeholder='Digite sua senha aqui...' value={senha} onChange={event => setSenha(event.target.value)} />
-                        <br></br>
+                        <input type="password" placeholder='Digite sua senha aqui...' value={senha} onChange={event => setSenha(event.target.value)} />
+                            <br></br>
 
 
-                        <button type='submit' onClick={() => login()}>Login</button>
+                            <button type='submit' onClick={() => login()}>Login</button>
                     </div>
                 </Container>
             </form>
