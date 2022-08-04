@@ -46,8 +46,6 @@ export const Container = styled.div`
             grid-template-columns: repeat(4, 1fr);
 
             img {
-                /* width: 170px;
-                height: 250px; */
                 width: 14.31rem;
                 height: 21.25rem;
             }

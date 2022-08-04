@@ -30,5 +30,11 @@ export const Div = styled.div`
                 max-width: 100%;
                 word-wrap: break-word;
             }
+
+            img:hover {
+                filter: brightness(120%);
+                cursor: pointer;
+                
+            }
         }
 `;

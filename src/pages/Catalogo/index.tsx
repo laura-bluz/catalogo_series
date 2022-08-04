@@ -15,6 +15,7 @@ import Modal from "react-modal";
 
 export function Catalogo() {
 
+    const [selectSerie, setSelectSerie] = useState<Serie>({});
     const [modalOpen, setModalOpen] = useState(false);
     const [series, setSeries] = useState<Serie[]>([{}]);
     const [user, setUser] = useState<User | null>()
@@ -47,10 +48,11 @@ export function Catalogo() {
 
 
     console.log("modalOpen", modalOpen)
-    function getcallbackValue() {
+    function getcallbackValue(serie: Serie) {
         if (!modalOpen) {
             setModalOpen(true);
-            console.log("abriu")
+            setSelectSerie(serie)
+
         }
     }
 
@@ -70,7 +72,7 @@ export function Catalogo() {
                                     <Card
                                         // onOpenModal={handleOpenModal}
                                         callbackValue={getcallbackValue}
-                                         
+
                                         key={i}
                                         serie={serie}
                                     />
@@ -95,14 +97,38 @@ export function Catalogo() {
                 </Container>
             </Box>
 
+
             <Modal
                 isOpen={modalOpen}
+                style={{ content: { width: '50%', height: '75%', marginTop: '3%', marginLeft: '25%', padding: '0' } }}
                 onRequestClose={() => setModalOpen(false)}
-                // ariaHideApp={false}
+            // ariaHideApp={false}
             >
-                <p> Abriu</p>
-                {/* <p>Review: {props.serie.descricao}</p> */}
+                <div className="modal">
+                    {/* <img height={'100%'} width={'69.23%'} src={selectSerie.imagemURL} alt="Imagem" /> */}
+                    <div style={{ display: "flex" }}>
+                        <img width={'500'} height={'700'} src={selectSerie.imagemURL} alt="Imagem" />
+
+                        <div style={{ marginTop: '1rem', padding: '1rem', fontSize: '18px' }}>
+                            <div style={{ display: "flex" }}>
+                                <span style={{ color: 'var(--blue)', marginTop: '3rem' }}>Nome:</span>
+                                <p style={{ marginLeft: '2rem', marginTop: '3rem', fontFamily: 'cursive' }}>{selectSerie.nome}</p>
+                            </div>
+                            <br></br>
+                            <div style={{ display: "flex" }}>
+                                <span style={{ color: 'var(--blue)', marginTop: '3rem' }}>Nota:</span>
+                                <p style={{ marginLeft: '2.5rem', marginTop: '3rem', fontFamily: 'cursive' }}>{selectSerie.nota}/10</p>
+                            </div>
+                            <br></br>
+                            <div style={{ display: "flex",  width: '110%', height:'20%', overflowY: 'scroll'}}>
+                                <span style={{ color: 'var(--blue)', marginTop: '3rem' }}>Review:</span>
+                                <p style={{ marginLeft: '1.5rem', marginTop: '3rem', fontFamily: 'cursive' }}> {selectSerie.descricao}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </Modal>
+
         </>
     )
 }
