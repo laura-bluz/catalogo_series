@@ -1,10 +1,23 @@
 import styled from "styled-components";
+import img from "../../assets/series.jpg";
 
 export const Box = styled.div`
     display: flex;
     flex-direction: row;
 `;
 
+export const Background = styled.div`
+    background-image: url(${img});
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.75;
+    filter: brightness(10%);
+    /* filter: contrast(30%); */
+
+
+`;
 
 export const ModalBlock = styled.div`
 
@@ -66,8 +79,11 @@ export const ModalBlock = styled.div`
 
 export const Container = styled.div`
     width: 100%;
+
+    /* background-image: url(${img}); */
+    
+
     /* background-image: repeating-linear-gradient(50deg, black, blue 10%, black 20%); */
-    background: red;
     nav {
         ul {
             li {
@@ -103,12 +119,14 @@ export const Container = styled.div`
         div.cards {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 2rem;
             overflow-y: auto !important;
-            height: 80vh;
-
+            height: 85vh;
+            
             img {
-                width: 14.31rem;
-                height: 21.25rem;
+                width: 100%;
+                height: 50vh;
             }
         }
 

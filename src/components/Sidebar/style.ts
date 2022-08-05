@@ -5,12 +5,11 @@ export const Container = styled.nav`
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    /* position: fixed; */
     align-items: center;
   
     max-width: 24rem;
     width: 100%;
-    height: 98vh;
+    height: 100vh;
 `;
 
 export const Content = styled.div`

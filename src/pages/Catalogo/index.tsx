@@ -1,5 +1,5 @@
 import { Sidebar } from "../../components/Sidebar";
-import { Container, Box, ModalBlock } from "./style";
+import { Container, Box, ModalBlock, Background } from "./style";
 import "../../components/Sidebar/style";
 import { useEffect, useState } from "react";
 import { Serie } from "../../interfaces";
@@ -10,7 +10,6 @@ import flecha_para_cima from "../../assets/flecha_para_cima.png"
 import { Card } from "../../components/Cards";
 import { getAuth, User } from "firebase/auth";
 import Modal from "react-modal";
-
 
 
 export function Catalogo() {
@@ -60,11 +59,10 @@ export function Catalogo() {
         <>
             <Box>
                 <Sidebar />
-
-                <Container>
+                <Background></Background>           
+                 <Container>
 
                     <Header />
-
                     {series?.length > 0 ?
                         <div className="cards">
                             {series.map((serie, i) => {
@@ -128,7 +126,6 @@ export function Catalogo() {
                     </div>
                 </ModalBlock>
             </Modal>
-
         </>
     )
 }
