@@ -20,7 +20,6 @@ export const ModalBlock = styled.div`
 
         div.dados {
             margin-top: 1rem;
-            /* padding: 1rem; */
             height: 100%;
             font-size: 18px;     
             width: 50%;
@@ -58,6 +57,7 @@ export const ModalBlock = styled.div`
                 width: 80%;
                 margin-left: 1.5rem;
                 word-break: break-all;
+                font-family: 'cursive' !important;
             }
         }        
     }
@@ -67,7 +67,7 @@ export const ModalBlock = styled.div`
 export const Container = styled.div`
     width: 100%;
     /* background-image: repeating-linear-gradient(50deg, black, blue 10%, black 20%); */
-        
+    background: red;
     nav {
         ul {
             li {
@@ -103,6 +103,8 @@ export const Container = styled.div`
         div.cards {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            overflow-y: auto !important;
+            height: 80vh;
 
             img {
                 width: 14.31rem;

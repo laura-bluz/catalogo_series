@@ -4,7 +4,8 @@ export const Container = styled.nav`
     background: var(--blue);
     display: flex;
     flex-direction: column;
-  
+    overflow: hidden;
+    /* position: fixed; */
     align-items: center;
   
     max-width: 24rem;
