@@ -4,7 +4,6 @@ O sistema salva as séries separadamente para cada usuário, assim cada usuário
 
 
 Funcionamento do Projeto:
-- Primeiramente o usuário deve logar em sua conta e, caso ainda não possua uma conta, já pode criá-la rapidamente;
-- Após logar, o usuário pode cadastrar uma nova série ou ver suas séries já cadastradas;
+- Após logar em sua conta, o usuário pode cadastrar uma nova série ou ver suas séries já cadastradas;
 - Para cadastrar uma série, é necessário preencher um formulário que contém nome, sua nota, sua review da série e uma imagem da série para inserir no banco;
 - Suas séries serão exibidas em um catálogo com imagem e nome e que, ao clicar na imagem se abre um Modal com as informações completas.
