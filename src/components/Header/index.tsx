@@ -22,9 +22,7 @@ export function Header() {
             // const serieCollectionRef = collection(db, "users", uid)
             const docUser = doc(db, 'users', uid)
             const docSnap = await getDoc(docUser)
-            // console.log('docuser', docSnap);
             const data = docSnap.exists() ? docSnap.data() : null
-            // console.log('data',data)
             if (data?.nome)
                 setUserName(data?.nome);
         }

@@ -29,9 +29,7 @@ export function CadastroSerie() {
         if (auth.currentUser?.uid) {
             const docUser = doc(db, 'users', auth.currentUser.uid)
             const docSnap = await getDoc(docUser)
-            // console.log('docuser', docSnap);
             const data = docSnap.exists() ? docSnap.data() : null
-            // console.log('data', data)
             const updateRef = doc(db, 'users', auth.currentUser.uid);
             const aux = data?.serie;
             var array = aux.concat([{ nome: serie.nome, descricao: serie.descricao, nota: serie.nota, imagemURL: url }]);
@@ -58,7 +56,6 @@ export function CadastroSerie() {
         if (!file || !user?.uid) return;
 
         const storageRef = ref(storage, `imagens/${auth.currentUser?.uid}/${file.name}`);
-        // console.log("storageref", storageRef)
         const uploadTask = uploadBytesResumable(storageRef, file);
 
         uploadTask.on(

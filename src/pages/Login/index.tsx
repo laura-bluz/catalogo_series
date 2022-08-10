@@ -18,14 +18,9 @@ export function Login() {
         event.preventDefault();
     }
 
-    function esconderSenha() {
-    
-    }
-
     async function login() {
         await signInWithEmailAndPassword(auth, email, senha)
             .then(value => {
-                console.log("Usuário logado com sucesso!");
                 navigate('/catalogo', { replace: true })
             })
             .catch(error => {
@@ -37,7 +32,7 @@ export function Login() {
     return (
         <Box>
             <Sidebar />
-            <form className="form-login" onSubmit={handleLogin}>
+            <form className="form-login" onSubmit={(e) => e?.preventDefault()}>
                 <Container>
                     <div>
                         <h1>Login</h1>

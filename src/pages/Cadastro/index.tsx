@@ -24,7 +24,6 @@ export function Cadastro() {
         if (senha === confirmSenha) {
             createUserWithEmailAndPassword(auth, email, senha)
                 .then(value => {
-                    console.log("v", value)
                     setDoc(doc(db, 'users', value.user.uid), { nome: nome, sobrenome: sobrenome, cidade: cidade, estado: estado, email: email, uid: value.user.uid, serie: [] })
                         .then(e => {
                             alert("Cadastro realizado com sucesso!");
@@ -41,9 +40,6 @@ export function Cadastro() {
         }
     }
 
-    function handleCadastro(event: FormEvent) {
-        event.preventDefault();
-    }
 
     function voltar() {
         return (
@@ -55,7 +51,7 @@ export function Cadastro() {
         <Box>
             <Sidebar />
 
-            <form className="form-cadastro" onSubmit={handleCadastro}>
+            <form className="form-cadastro" onSubmit={(e) => e?.preventDefault()}>
                 <Container>
                     <div>
                         <button className="voltar" type="button" onClick={() => voltar()} ><img src={volta} alt="voltar" /></button>
